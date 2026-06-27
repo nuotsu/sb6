@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist } from 'next/font/google'
 import { preconnect } from 'react-dom'
+import { Providers } from '@/ui/providers'
 import './globals.css'
+import Link from 'next/link'
 
 const geistSans = Geist({ subsets: ['latin'] })
 
@@ -27,7 +29,15 @@ export default function ({
 
 	return (
 		<html lang="en" className="bg-background text-foreground antialiased">
-			<body>{children}</body>
+			<body>
+				<header>
+					<Link href="/">Scorebug 6</Link>
+				</header>
+
+				<main>
+					<Providers>{children}</Providers>
+				</main>
+			</body>
 		</html>
 	)
 }

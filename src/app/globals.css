@@ -6,3 +6,14 @@
 }
 
 @custom-variant hover (&:hover);
+
+@layer base {
+	summary {
+		cursor: pointer;
+		display: block;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+	}
+}
