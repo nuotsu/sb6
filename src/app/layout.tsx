@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist } from 'next/font/google'
 import { preconnect } from 'react-dom'
-import { Providers } from '@/ui/providers'
+import Providers from '@/ui/providers'
 import './globals.css'
 import Link from 'next/link'
 
@@ -23,9 +23,9 @@ export default function ({
 	children: React.ReactNode
 }>) {
 	preconnect('https://statsapi.mlb.com')
+	preconnect('https://img.mlbstatic.com')
 	// preconnect('https://www.mlbstatic.com')
 	// preconnect('https://midfield.mlbstatic.com')
-	// preconnect('https://img.mlbstatic.com')
 
 	return (
 		<html lang="en" className="bg-background text-foreground antialiased">

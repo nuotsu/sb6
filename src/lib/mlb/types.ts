@@ -7,11 +7,17 @@ export type GameStatus = {
 	statusCode: string
 }
 
+export type ProbablePitcher = {
+	id: number
+	fullName: string
+}
+
 export type ScheduleGameTeam = {
 	team: {
 		abbreviation: string
 	}
 	score?: number
+	probablePitcher?: ProbablePitcher
 }
 
 export type ScheduleGameTeams = {
@@ -19,11 +25,18 @@ export type ScheduleGameTeams = {
 	home: ScheduleGameTeam
 }
 
+export type ScheduleLinescore = {
+	currentInning?: number
+	inningState?: 'Top' | 'Middle' | 'Bottom' | 'End'
+	inningHalf?: string
+}
+
 export type ScheduleGame = {
 	gamePk: number
 	gameDate: string
 	status: GameStatus
 	teams: ScheduleGameTeams
+	linescore?: ScheduleLinescore
 	[key: string]: unknown
 }
 
@@ -34,11 +47,30 @@ export type ScheduleResponse = {
 	}[]
 }
 
+export type BaseRunner = {
+	id: number
+	fullName: string
+}
+
+export type RunnersOnBase = {
+	first?: BaseRunner
+	second?: BaseRunner
+	third?: BaseRunner
+}
+
+export type LiveFeedLinescore = {
+	inningState?: ScheduleLinescore['inningState']
+	outs?: number
+	offense?: RunnersOnBase & Record<string, unknown>
+}
+
 export type LiveFeedResponse = {
 	gameData: {
 		status: GameStatus
 		[key: string]: unknown
 	}
-	liveData: unknown
-	[key: string]: unknown
+	liveData: {
+		linescore?: LiveFeedLinescore
+		[key: string]: unknown
+	}
 }

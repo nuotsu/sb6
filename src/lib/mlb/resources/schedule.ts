@@ -1,11 +1,11 @@
-import { mlbFetch } from '@/lib/mlb/core'
+import { mlbFetch, SCHEDULE_HYDRATE } from '@/lib/mlb/core'
 import { datePolicy, getScheduleGames } from '@/lib/mlb/policies'
 import type { AbstractGameState, ScheduleGame, ScheduleResponse } from '@/lib/mlb/types'
 
 export async function fetchSchedule(date: string): Promise<ScheduleResponse> {
 	return mlbFetch<ScheduleResponse>(
 		'/api/v1/schedule',
-		{ sportId: 1, date, hydrate: 'team,linescore' },
+		{ sportId: 1, date, hydrate: SCHEDULE_HYDRATE },
 		{ revalidate: datePolicy(date).server },
 	)
 }

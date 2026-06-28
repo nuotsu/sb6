@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import { fetchSchedule } from '@/lib/mlb'
 import { isValidDate } from '@/lib/temporal'
-import { ScheduleList } from '@/ui/schedule-list'
+import ScheduleList from '@/ui/schedule-list'
 
 export default async function ({ params }: PageProps<'/schedule/[date]'>) {
 	const { date } = await params

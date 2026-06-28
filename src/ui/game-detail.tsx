@@ -8,7 +8,7 @@ import {
 	type ScheduleResponse,
 } from '@/lib/mlb'
 
-export function GameDetail({
+export default function ({
 	gamePk,
 	scheduleFallback,
 	liveFeedFallback,

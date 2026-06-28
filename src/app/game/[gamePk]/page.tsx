@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { fetchGame, fetchLiveFeed, getGameFromSchedule } from '@/lib/mlb'
-import { GameDetail } from '@/ui/game-detail'
+import GameDetail from '@/ui/game-detail'
 
 function parseGamePk(value: string) {
 	const gamePk = Number(value)

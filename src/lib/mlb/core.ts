@@ -2,6 +2,8 @@ import { gameKey, liveFeedKey, scheduleKey } from '@/lib/mlb/keys'
 
 export const MLB_ORIGIN = 'https://statsapi.mlb.com'
 
+export const SCHEDULE_HYDRATE = 'team,linescore,probablePitcher(note)'
+
 type CacheOptions = {
 	revalidate?: number | false
 }
@@ -45,7 +47,7 @@ const keyToPath = (key: readonly unknown[]) => {
 		return mlbUrl('/api/v1/schedule', {
 			sportId: 1,
 			date,
-			hydrate: 'team,linescore',
+			hydrate: SCHEDULE_HYDRATE,
 		})
 	}
 
@@ -57,7 +59,7 @@ const keyToPath = (key: readonly unknown[]) => {
 		return mlbUrl('/api/v1/schedule', {
 			sportId: 1,
 			gamePk,
-			hydrate: 'team,linescore',
+			hydrate: SCHEDULE_HYDRATE,
 		})
 	}
 
